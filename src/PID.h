@@ -13,10 +13,22 @@ public:
   /*
   * Coefficients
   */ 
-  double Kp;
-  double Ki;
-  double Kd;
-
+  double p[3];
+  double dp[3];
+  double tol;
+  
+  /*
+  * other variables
+  */
+  double prev_cte = -1; //uninitialized
+  double cte;
+  double int_cte = 0;
+  int chunk_size;
+  int count = 0;
+  double best_error;
+  double diff_cte;
+  double best_diff_cte;
+  
   /*
   * Constructor
   */
@@ -30,7 +42,7 @@ public:
   /*
   * Initialize PID.
   */
-  void Init(double Kp, double Ki, double Kd);
+  void Init(double tol, int chunk_size);
 
   /*
   * Update the PID error variables given cross track error.
@@ -41,6 +53,21 @@ public:
   * Calculate the total PID error.
   */
   double TotalError();
+    
+  /*
+   * Calculate the steering angle.
+   */
+  double CalculateSteer(double speed);
+
+  /*
+   * Calculate throttle.
+   */
+  double CalculateThrottle(double steer_value, double speed);
+  
+  /*
+   * twiddle will reset the coefficients.
+   */
+  void Twiddle();
 };
 
 #endif /* PID_H */
