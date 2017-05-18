@@ -13,5 +13,6 @@ The steering angle is controlled by the PID controller. The following additional
 
 Note: We tried to implement twiddle but found it difficult to stabilize and also not necessary after we found the coefficients for P,I,D.
 
-Following is a [video](https://www.youtube.com/watch?v=gajd7TQmusk&t=21s) of a full run.
+Following is a [video](https://www.youtube.com/watch?v=gajd7TQmusk) of a full run.
 
+[![Project Video](https://github.com/sjamthe/CarND-PID-Control-Project/blob/master/pid-screenshot.png)](https://www.youtube.com/watch?v=gajd7TQmusk)
